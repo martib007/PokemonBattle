@@ -6,9 +6,49 @@ public class PokemonClientCode {
 		
 		System.out.println("Welcome to our Pokemon Battle System!");
 		System.out.println("This will be a user vs. user experience! Pick your Pokemon and Start Battling");
-		System.out.println("Aviable Pokemon: Turtwig, Cyndaquil, Mudkip");//add more pokemon later
+		System.out.println("Aviable Pokemon Choices: Turtwig, Cyndaquil, and Mudkip");//add more pokemon later
+		System.out.println("Player 1 choose first!");
 		
-		String pokemon = userInput.next();
-		System.out.println("You chose " + pokemon);
+		//Player 1 chooses Pokemon
+		while(true) {
+			String pokemon1 = userInput.next();
+			if (pokemon1.toLowerCase().equals("turtwig")){
+				System.out.println("Player 1 chose " + pokemon1 + ".");
+				break;
+			}
+			else if (pokemon1.toLowerCase().equals("cyndaquil")){
+				System.out.println("Player 1 chose " + pokemon1 + ".");
+				break;
+			}
+			else if (pokemon1.toLowerCase().equals("mudkip")){
+				System.out.println("Player 1 chose " + pokemon1 + ".");
+				break;
+			}
+			else{
+			System.out.println("You did not enter a valid pokemon, please try again.");
+			}
+		}
+		
+		System.out.println("Player 2 choose next!");
+		
+		//Player 2 chooses Pokemon
+		while(true) {
+			String pokemon2 = userInput.next();
+			if (pokemon2.toLowerCase().equals("turtwig")){
+				System.out.println("Player 2 chose " + pokemon2 + ".");
+				break;
+			}
+			else if (pokemon2.toLowerCase().equals("cyndaquil")){
+				System.out.println("Player 2 chose " + pokemon2 + ".");
+				break;
+			}
+			else if (pokemon2.toLowerCase().equals("mudkip")){
+				System.out.println("Player 2 chose " + pokemon2 + ".");
+				break;
+			}
+			else{
+			System.out.println("You did not enter a valid pokemon, please try again.");
+			}
+		}
 	}
 }
