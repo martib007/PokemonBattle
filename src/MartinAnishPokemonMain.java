@@ -88,7 +88,7 @@ public class MartinAnishPokemonMain {
 		System.out.println("Go!");
 		
 		//battle starts, does not end until one pokemon is defeated
-		while (p1.hp > 0 || p2.hp > 0){
+		while (p1.hp >= 0 && p2.hp >= 0){
 			roundsPlayed++; //count the amount of rounds that the battle goes on for
 			
 			//player 1 chooses what to do
@@ -135,28 +135,84 @@ public class MartinAnishPokemonMain {
 				System.out.println(pokemon1 + " and " + pokemon2 + " attack each other.");
 				p1.hp = p1.hp - 60;
 				p2.hp = p2.hp - 60;
-				System.out.println(pokemon1 + " has " + p1.hp + " hp.");
-				System.out.println(pokemon2 + " has " + p2.hp + " hp.");
+				if (p1.hp <= 0){
+					System.out.println(pokemon1 + " now has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon1 + " now has " + p1.hp + " hp.");
+				}
+				if (p2.hp <= 0){
+					System.out.println(pokemon2 + " now has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon2 + " now has " + p2.hp + " hp.");
+				}
 			}
 			else if (choice1.equals("defend") && choice2.equals("attack")){ //player 1 defends, player 2 attacks
-				
+				System.out.println(pokemon2 + " attacks " + pokemon1 + ", but " + pokemon1 + " defends.");
+				int temp = p1.def - 60; //removes (defense stat) from attack given
+				if (temp > 0){ //cannot gain health from defending
+					temp = 0;
+				}
+				p1.hp = p1.hp + temp;
+				if (p1.hp <= 0){
+					System.out.println(pokemon1 + " now has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon1 + " now has " + p1.hp + " hp.");
+				}
+				if (p2.hp <= 0){
+					System.out.println(pokemon2 + " now has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon2 + " now has " + p2.hp + " hp.");
+				}
 			}
 			else if (choice1.equals("attack") && choice2.equals("defend")){ //player 1 attacks, player 2 defends
-				
+				System.out.println(pokemon1 + " attacks " + pokemon2 + ", but " + pokemon2 + " defends.");
+				int temp = p2.def - 60; //removes (defense stat) from attack given
+				if (temp > 0){ //cannot gain health from defending
+					temp = 0;
+				}
+				p2.hp = p2.hp + temp;
+				if (p1.hp <= 0){
+					System.out.println(pokemon1 + " now has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon1 + " now has " + p1.hp + " hp.");
+				}
+				if (p2.hp <= 0){
+					System.out.println(pokemon2 + " now has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon2 + " now has " + p2.hp + " hp.");
+				}
 			}
 			else if (choice1.equals("defend") && choice2.equals("defend")){ //both players defend
-				
+				System.out.println("Both pokemone defend against each other, nothing happens...");
+				if (p1.hp <= 0){
+					System.out.println(pokemon1 + " has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon1 + " has " + p1.hp + " hp.");
+				}
+				if (p2.hp <= 0){
+					System.out.println(pokemon2 + " has 0 hp.");
+				}
+				else{
+					System.out.println(pokemon2 + " has " + p2.hp + " hp.");
+				}
 			}
 		}
 		
 		//final decision of who wins
 		if (p1.hp > p2.hp){
-			System.out.println(pokemon2 + "has feinted, Player 1 is the victor with their " + pokemon1 + ".");
-			System.out.println("Player 1 won in " + roundsPlayed + "rounds.");
+			System.out.println(pokemon2 + " has feinted, Player 1 is the victor with their " + pokemon1 + ".");
+			System.out.println("Player 1 won in " + roundsPlayed + " rounds.");
 		}
 		else{
-			System.out.println(pokemon1 + "has feinted, Player 1 is the victor with their " + pokemon2 + ".");
-			System.out.println("Player 2 won in " + roundsPlayed + "rounds.");
+			System.out.println(pokemon1 + " has feinted, Player 2 is the victor with their " + pokemon2 + ".");
+			System.out.println("Player 2 won in " + roundsPlayed + " rounds.");
 		}
 	}
 }
